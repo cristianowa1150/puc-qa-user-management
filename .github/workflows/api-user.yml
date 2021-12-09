@@ -9,16 +9,16 @@ on:
   pull_request:
     branches: [ main ]
 
+defaults:
+  run:
+    working-directory: user-api
+
 jobs:
   build:
-
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./user-admin
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
+        node-version: [16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -28,5 +28,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+        cache-dependency-path: user-api/package-lock.json
     - run: npm ci
     - run: npm test
