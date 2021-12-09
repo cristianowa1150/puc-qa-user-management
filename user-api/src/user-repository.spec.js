@@ -5,12 +5,14 @@ describe('UserRepository', () => {
   let userRepository;
   let collection;
   let client;
+  let db;
 
   beforeAll(async () => {
     const uri = 'mongodb://root:root@localhost?retryWrites=true&writeConcern=majority';
     client = new MongoClient(uri);
     await client.connect();
-    collection = client.db('users_db').collection('users');
+    db = client.db('users_db');
+    collection = db.collection('users');
     userRepository = new UserRepository(collection);
   });
 
