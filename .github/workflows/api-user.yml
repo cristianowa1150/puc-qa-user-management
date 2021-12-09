@@ -17,9 +17,6 @@ jobs:
   tests:
     name: Testes de Unidade e Integração
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16.x]
     services:
       mongodb:
         image: mongo
@@ -33,7 +30,7 @@ jobs:
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 16.x
         cache: 'npm'
         cache-dependency-path: user-api/package-lock.json
     - run: npm ci
@@ -42,15 +39,12 @@ jobs:
   lint:
     name: Análise estática
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16.x]
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 16.x
         cache: 'npm'
         cache-dependency-path: user-api/package-lock.json
     - run: npm ci
@@ -59,15 +53,12 @@ jobs:
   security:
     name: Vulnerabilidade
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16.x]
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 16.x
         cache: 'npm'
         cache-dependency-path: user-api/package-lock.json
     - run: npm ci
