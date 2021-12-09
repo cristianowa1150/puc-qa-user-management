@@ -2,7 +2,6 @@ const request = require('supertest');
 const app = require('./app');
 const {MongoClient} = require('mongodb');
 const UserRepository = require('./user-repository');
-const {ObjectId} = require('bson');
 
 describe('UserApi', () => {
   let userRepository;
@@ -86,7 +85,7 @@ describe('UserApi', () => {
           email: 'john@doe.com',
         });
 
-        const response = await request(app).get(`/users/${user._id}`);
+        const response = await request(app).get(`/users/${user.id}`);
 
         expect(response.statusCode).toBe(200);
         expect(response.body).toEqual(expect.objectContaining({

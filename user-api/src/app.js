@@ -2,7 +2,6 @@ const express = require('express');
 const {MongoClient} = require('mongodb');
 const UserRepository = require('./user-repository');
 const bodyParser = require('body-parser');
-const {ObjectId} = require('bson');
 const cors = require('cors');
 
 const app = express();
@@ -43,7 +42,7 @@ app.post('/users', async (request, response) => {
 
 app.get('/users/:id', async (request, response) => {
   try {
-    const user = await userRepository.findOneById(ObjectId(request.params.id));
+    const user = await userRepository.findOneById(request.params.id);
     response.json(user);
   } catch (e) {
     response.status(404).json({
@@ -55,7 +54,7 @@ app.get('/users/:id', async (request, response) => {
 
 app.put('/users/:id', async (request, response) => {
   try {
-    const user = await userRepository.update(ObjectId(request.params.id), request.body);
+    const user = await userRepository.update(request.params.id, request.body);
     response.json(user);
   } catch (e) {
     response.status(404).json({
@@ -67,10 +66,9 @@ app.put('/users/:id', async (request, response) => {
 
 app.delete('/users/:id', async (request, response) => {
   try {
-    await userRepository.delete(ObjectId(request.params.id));
+    await userRepository.delete(request.params.id);
     response.status(200).json(request.body);
   } catch (e) {
-    console.log(e.message);
     response.status(404).json({
       message: 'User not found',
       code: 404,
