@@ -14,7 +14,8 @@ defaults:
     working-directory: user-api
 
 jobs:
-  build:
+  tests:
+    name: Testes de Unidade e Integração
     runs-on: ubuntu-latest
     strategy:
       matrix:
