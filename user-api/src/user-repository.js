@@ -1,4 +1,4 @@
-const { ObjectId } = require("bson");
+const {ObjectId} = require('bson');
 
 /**
  * Substitui o atributo "_id" por "id"
