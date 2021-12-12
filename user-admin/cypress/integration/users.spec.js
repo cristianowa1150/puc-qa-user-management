@@ -41,8 +41,7 @@ describe("Gestão de usuários", () => {
 
         // confirmação
         cy.visit("/users")
-        cy.wait(5000)
-        cy.get('.MuiTable-root tbody tr', {timeout: 2000}).should('have.length', 1)
+        cy.get('.MuiTable-root tbody tr').should('have.length', 1)
     })
 
     it("Editar um usuário", () => {
