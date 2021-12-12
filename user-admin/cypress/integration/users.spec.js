@@ -41,7 +41,7 @@ describe("Gestão de usuários", () => {
 
         // confirmação
         cy.visit("/#/users")
-        cy.wait(2000)
+        cy.wait(5000)
         cy.get('.MuiTable-root tbody tr', {timeout: 2000}).should('have.length', 1)
     })
 
