@@ -40,7 +40,7 @@ describe("Gestão de usuários", () => {
         cy.get('button[type=submit]').click()
 
         // confirmação
-        cy.get('a[href="#/users"]').click()
+        cy.visit("/#/users")
         cy.wait(2000)
         cy.get('.MuiTable-root tbody tr', {timeout: 2000}).should('have.length', 1)
     })
