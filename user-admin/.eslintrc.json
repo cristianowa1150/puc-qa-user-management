@@ -1,9 +1,4 @@
 {
-    "settings": {
-        "react": {
-            "version": "detect"
-        }
-    },
     "env": {
         "browser": true,
         "es2021": true
@@ -16,13 +11,12 @@
         "ecmaFeatures": {
             "jsx": true
         },
-        "ecmaVersion": 12,
+        "ecmaVersion": 13,
         "sourceType": "module"
     },
     "plugins": [
         "react"
     ],
     "rules": {
-        "max-len": ["error", {"code": 90}]
     }
 }

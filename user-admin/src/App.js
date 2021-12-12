@@ -7,7 +7,12 @@ const server = process.env.USER_API || 'http://localhost:4000';
 const dataProvider = jsonServerProvider(server);
 const App = () => (
   <Admin dataProvider={dataProvider}>
-    <Resource name="users" list={UserList} create={UserCreate} edit={UserEdit} />
+    <Resource
+      name="users"
+      list={UserList}
+      create={UserCreate}
+      edit={UserEdit}
+    />
   </Admin>
 );
 
