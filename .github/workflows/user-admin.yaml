@@ -10,6 +10,18 @@ defaults:
     working-directory: user-admin
 
 jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Starts Api Server
+        run: |
+          npm ci --prefix ../user-api
+          npm run start
+      - uses: cypress-io/github-action@v2
+        with:
+          build: npm run build
+          start: npm start
 
   lint:
     name: Análise estática
