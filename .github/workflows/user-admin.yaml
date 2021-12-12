@@ -24,6 +24,7 @@ jobs:
         with:
           build: npm --prefix ./user-admin run build
           start: npm --prefix ./user-admin start
+          working-directory: ./user-admin
 
   lint:
     name: Análise estática
