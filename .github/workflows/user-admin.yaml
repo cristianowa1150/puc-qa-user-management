@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Starts Api Server
+      - name: Starts API server in background
         run: |
           npm ci --prefix ../user-api
           npm ci --prefix ../user-api run start &
