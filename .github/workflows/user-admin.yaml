@@ -39,7 +39,9 @@ jobs:
         if: failure()
         with:
           name: videos
-          path: user-admin/cypress/{screenshots,videos}/**
+          path: |
+            user-admin/cypress/screenshots/
+            user-admin/cypress/videos/
           retention-days: 1
 
   lint:
