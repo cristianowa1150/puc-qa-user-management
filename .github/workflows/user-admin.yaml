@@ -17,14 +17,13 @@ jobs:
       - uses: actions/checkout@v2
       - name: Starts Api Server
         run: |
-          npm --prefix ../user-api ci 
-          npm i pm2 -g
-          pm2 start ../user-api/src/server.js
+          npm ci --prefix ../user-api
+          npm ci --prefix ../user-api run start &
       - uses: cypress-io/github-action@v2
         with:
-          build: npm --prefix ./user-admin run build
-          start: npm --prefix ./user-admin start
-          working-directory: ./user-admin
+          build: npm run build
+          start: npm start
+          working-directory: user-admin
 
   lint:
     name: Análise estática
