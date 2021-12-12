@@ -18,7 +18,8 @@ jobs:
       - name: Starts Api Server
         run: |
           npm --prefix ../user-api ci 
-          npm --prefix ../user-api run start
+          npm i pm2 -g
+          pm2 start ../user-api/src/server.js
       - uses: cypress-io/github-action@v2
         with:
           build: npm --prefix ./user-admin run build
