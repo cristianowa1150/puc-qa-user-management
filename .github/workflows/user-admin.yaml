@@ -13,6 +13,9 @@ jobs:
   tests:
     name: Testes de Sistema (E2E)
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        browser: [firefox, chrome]
     steps:
       - uses: actions/checkout@v2
       - name: Starts Api Server
@@ -23,6 +26,7 @@ jobs:
         with:
           build: npm run build
           start: npm start
+          browser: ${{ browser }}
 
   lint:
     name: Análise estática
