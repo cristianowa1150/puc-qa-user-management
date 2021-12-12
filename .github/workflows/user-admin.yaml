@@ -11,7 +11,7 @@ defaults:
 
 jobs:
   tests:
-    name: Testes de Sistema
+    name: Testes de Sistema (E2E)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
