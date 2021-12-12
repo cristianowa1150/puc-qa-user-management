@@ -13,6 +13,14 @@ jobs:
   tests:
     name: Testes de Sistema (E2E)
     runs-on: ubuntu-latest
+    services:
+      mongodb:
+        image: mongo
+        env:
+          MONGO_INITDB_ROOT_USERNAME: root
+          MONGO_INITDB_ROOT_PASSWORD: root
+        ports:
+          - 27017:27017
     steps:
       - uses: actions/checkout@v2
       - name: Starts API server in background
