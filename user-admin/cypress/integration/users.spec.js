@@ -84,7 +84,7 @@ describe("Gestão de usuários", () => {
             .as('user')
         })
 
-        it.only("a partir da listagem", () => {
+        it("a partir da listagem", () => {
             cy.visit('/users')
             cy.get('.MuiTable-root tbody tr td input[type=checkbox]').click()
             cy.get('button[aria-label=Delete]').click()
@@ -94,7 +94,7 @@ describe("Gestão de usuários", () => {
             cy.contains('Create').should('exist')
         })
         
-        it.only("a partir do formulário de edição", function () {
+        it("a partir do formulário de edição", function () {
             const {id} = this.user;
             cy.visit(`#/users/${id}`)
             cy.get('button[aria-label=Delete]').click()
