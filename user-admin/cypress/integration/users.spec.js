@@ -77,6 +77,9 @@ describe("Gestão de usuários", () => {
                 name: 'John Doe',
                 email: 'john@doe.com'
             })
+            .should(response => {
+                expect(response.status).to.eq(201)
+            })
             .its('body')
             .as('user')
         })
@@ -85,7 +88,7 @@ describe("Gestão de usuários", () => {
             cy.visit('/users')
             cy.get('.MuiTable-root tbody tr td input[type=checkbox]').click()
             cy.get('button[aria-label=Delete]').click()
-            cy.wait(500)
+            cy.wait(1000)
             cy.contains('No User yet').should('exist')
             cy.contains('Do you want to add one?').should('exist')
             cy.contains('Create').should('exist')
@@ -95,7 +98,7 @@ describe("Gestão de usuários", () => {
             const {id} = this.user;
             cy.visit(`#/users/${id}`)
             cy.get('button[aria-label=Delete]').click()
-            cy.wait(500)
+            cy.wait(1000)
             cy.contains('No User yet').should('exist')
             cy.contains('Do you want to add one?').should('exist')
             cy.contains('Create').should('exist')
