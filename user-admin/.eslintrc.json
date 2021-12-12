@@ -1,4 +1,9 @@
 {
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
     "env": {
         "browser": true,
         "es2021": true
@@ -18,5 +23,6 @@
         "react"
     ],
     "rules": {
+        "max-len": ["error", {"code": 90}]
     }
 }
