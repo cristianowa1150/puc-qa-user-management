@@ -32,6 +32,12 @@ jobs:
           build: npm run build
           start: npm start
           working-directory: user-admin
+      - name: Arquiva os videos
+        uses: actions/upload-artifact@v2
+        with:
+          name: videos
+          path: user-admin/cypress/{screenshots,videos}/**
+          retention-days: 1
 
   lint:
     name: Análise estática
